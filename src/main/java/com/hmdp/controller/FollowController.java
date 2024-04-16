@@ -7,13 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-/**
- * <p>
- * 前端控制器
- * </p>
- *
- * @author 虎哥
- */
+
 @RestController
 @RequestMapping("/follow")
 public class FollowController {
@@ -26,6 +20,11 @@ public class FollowController {
         return followService.follow(followUserId, isFollow);
     }
 
+    /**
+     * 是否关注
+     * @param followUserId
+     * @return
+     */
     @GetMapping("/or/not/{id}")
     public Result isFollow(@PathVariable("id") Long followUserId) {
         return followService.isFollow(followUserId);

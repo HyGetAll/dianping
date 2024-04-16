@@ -30,14 +30,7 @@ import java.util.concurrent.TimeUnit;
 import static com.hmdp.utils.RedisConstants.*;
 import static com.hmdp.utils.SystemConstants.USER_NICK_NAME_PREFIX;
 
-/**
- * <p>
- * 服务实现类
- * </p>
- *
- * @author 虎哥
- * @since 2021-12-22
- */
+
 @Slf4j
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
@@ -61,7 +54,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         // 5.发送验证码
         log.debug("发送短信验证码成功，验证码：{}", code);
         // 返回ok
-        return Result.ok();
+        return Result.ok(code);
     }
 
     @Override
@@ -86,6 +79,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         // 5.判断用户是否存在
         if (user == null) {
             // 6.不存在，创建新用户并保存
+            log.info("新用户，存入数据库:{}",phone);
             user = createUserWithPhone(phone);
         }
 
