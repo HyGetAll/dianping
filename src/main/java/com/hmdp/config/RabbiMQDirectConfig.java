@@ -33,8 +33,8 @@ public class RabbiMQDirectConfig {
     }
 
     @Bean
-    public MessageConverter jsonMessageConverter(ObjectMapper objectMapper) {
-        return new Jackson2JsonMessageConverter(objectMapper);
+    public MessageConverter jsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
     }
 
 }
